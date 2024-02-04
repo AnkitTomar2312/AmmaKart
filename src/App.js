@@ -1,9 +1,9 @@
 import React from "react";
-import ListItem from "./components/ListItems";
+import Products from "./components/Products/Products";
 const App = () => {
   return (
     <div>
-      <ListItem />
+      <Products />
     </div>
   );
 };
