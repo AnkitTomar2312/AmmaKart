@@ -1,30 +1,35 @@
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
+import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
-function AutoLayoutExample() {
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+function NavScrollExample() {
   return (
-    <Container>
-      <Row>
-        <Col>1 of 3</Col>
-        <Col>
-          <Form>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
+    <>
+      <Navbar
+        expand="lg"
+        className="bg-body-tertiary"
+        variant="bg-dark"
+        fixed="top"
+      >
+        <Container fluid>
+          <Navbar.Brand href="#">Navbar scroll</Navbar.Brand>
+          <Navbar.Toggle aria-controls="navbarScroll" />
+          <Navbar.Collapse id="navbarScroll">
+            <Form className="d-flex">
               <Form.Control
-                type="text"
-                placeholder="Enter Product name, category"
+                type="search"
+                placeholder="Search"
+                className="me-2"
+                aria-label="Search"
               />
-              <Button variant="primary" type="submit">
-                Submit
-              </Button>
-            </Form.Group>
-          </Form>
-        </Col>
-        <Col>3 of 3</Col>
-      </Row>
-    </Container>
+              <Button variant="outline-success">Search</Button>
+            </Form>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+    </>
   );
 }
 
-export default AutoLayoutExample;
+export default NavScrollExample;
