@@ -1,9 +1,21 @@
 import React from "react";
-import ListItem from "./components/ListItems";
+import HomeLayout from "./layouts/HomeLayout";
+import Products from "./components/Products/Products";
 const App = () => {
   return (
     <div>
-      <ListItem />
+      <HomeLayout>
+        <div
+          style={{
+            paddingTop: "100px",
+            display: "flex",
+            justifyContent: "start",
+            alignItems: "flex-start",
+          }}
+        >
+          <Products />
+        </div>
+      </HomeLayout>
     </div>
   );
 };
