@@ -2,7 +2,7 @@ import Nav from "react-bootstrap/Nav";
 
 function TabsExample() {
   return (
-    <div style={{ marginTop: "60px" }}>
+    <div>
       <Nav variant="tabs" defaultActiveKey="/home" f>
         <Nav.Item>
           <Nav.Link href="/home">Active</Nav.Link>

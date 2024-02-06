@@ -6,14 +6,9 @@ import Navbar from "react-bootstrap/Navbar";
 function NavScrollExample() {
   return (
     <>
-      <Navbar
-        expand="lg"
-        className="bg-body-tertiary"
-        variant="bg-dark"
-        fixed="top"
-      >
+      <Navbar expand="lg" className="bg-body-tertiary" fixed="top">
         <Container fluid>
-          <Navbar.Brand href="#">Navbar scroll</Navbar.Brand>
+          <Navbar.Brand href="#">Ammakart</Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Form className="d-flex">
