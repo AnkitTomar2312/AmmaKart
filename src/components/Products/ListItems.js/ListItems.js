@@ -13,7 +13,13 @@ const ListItems = ({ data }) => {
         </Card.Text>
         <Card.Title>{data.title}</Card.Title>
         <div className="d-grid">
-          <Button variant="danger" size="lg">
+          <Button
+            variant="danger"
+            size="lg"
+            onClick={() => {
+              console.log("clicked", data);
+            }}
+          >
             <div style={{ display: "flex", justifyContent: "space-between" }}>
               <span>Add To Cart</span>
               <img src="./assets/icons/add_cart.svg" />
