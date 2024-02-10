@@ -1,14 +1,13 @@
-import React, { Children } from "react";
-import Header from "../components/header/header";
-import Navigation from "../components/header/nav";
+import React from "react";
+import Header from "../components/Header/Header";
+import Subheader from "../components/SubHeader/Subheader";
+
 const HomeLayout = ({ children }) => {
   return (
     <div>
       <Header />
+      <Subheader />
       {children}
-      <div style={{ position: "fixed", top: "55px ", width: "100vw" }}>
-        <Navigation />
-      </div>
     </div>
   );
 };

@@ -1,30 +1,103 @@
-import Button from "react-bootstrap/Button";
-import Container from "react-bootstrap/Container";
-import Form from "react-bootstrap/Form";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
-function NavScrollExample() {
+import React from "react";
+
+const Header = () => {
   return (
     <>
-      <Navbar expand="lg" className="bg-body-tertiary" fixed="top">
-        <Container fluid>
-          <Navbar.Brand href="#">Ammakart</Navbar.Brand>
-          <Navbar.Toggle aria-controls="navbarScroll" />
-          <Navbar.Collapse id="navbarScroll">
-            <Form className="d-flex">
-              <Form.Control
-                type="search"
-                placeholder="Search"
-                className="me-2"
-                aria-label="Search"
-              />
-              <Button variant="outline-success">Search</Button>
-            </Form>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
+      <header>
+        <div className="nav-brand">
+          <a to="/">
+            <span style={{ color: "white", fontWeight: "600" }}>AmaKart</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="icon icon-tabler icon-tabler-shopping-cart"
+              width="30"
+              height="30"
+              viewBox="0 0 24 24"
+              strokeWidth="1.5"
+              stroke="white"
+              fill="none"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <circle cx="6" cy="19" r="2" />
+              <circle cx="17" cy="19" r="2" />
+              <path d="M17 17h-11v-14h-2" />
+              <path d="M6 5l14 1l-1 7h-13" />
+            </svg>
+          </a>
+        </div>
+        <div className="searchBox-container">
+          <form>
+            <input
+              name="search"
+              type="text"
+              id="search"
+              placeholder="Enter product name, category"
+            />
+            <button type="submit">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="icon icon-tabler icon-tabler-search"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                strokeWidth="1.5"
+                stroke="white"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <circle cx="10" cy="10" r="7" />
+                <line x1="21" y1="21" x2="15" y2="15" />
+              </svg>
+            </button>
+          </form>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="icon icon-tabler icon-tabler-search"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            strokeWidth="1.5"
+            stroke="white"
+            fill="none"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <circle cx="10" cy="10" r="7" />
+            <line x1="21" y1="21" x2="15" y2="15" />
+          </svg>
+        </div>
+        <div className="cart-container">
+          <button>
+            <span data-items={0}>Cart</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="icon icon-tabler icon-tabler-shopping-cart-plus"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              strokeWidth="1.5"
+              stroke="white"
+              fill="none"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <circle cx="6" cy="19" r="2" />
+              <circle cx="17" cy="19" r="2" />
+              <path d="M17 17h-11v-14h-2" />
+              <path d="M6 5l6.005 .429m7.138 6.573l-.143 .998h-13" />
+              <path d="M15 6h6m-3 -3v6" />
+            </svg>
+          </button>
+        </div>
+      </header>
     </>
   );
-}
+};
 
-export default NavScrollExample;
+export default Header;
