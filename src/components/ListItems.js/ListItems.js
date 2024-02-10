@@ -21,9 +21,9 @@ const ListItems = ({ data }) => {
 
       <button
         className={"cart-add"}
-        // onClick={() => {
-        //   data;
-        // }}
+        onClick={() => {
+          console.log(data);
+        }}
       >
         <span>Add to Cart</span>
         <img src="./assets/icons/add_cart.svg" alt="addtocartsvg" />
