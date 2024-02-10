@@ -1,31 +1,12 @@
-import Carousel from "react-bootstrap/Carousel";
-
-function UncontrolledExample() {
+import React from "react";
+import Products from "./components/Products/Products";
+import HomeLayout from "./Layouts/HomeLayout";
+const App = () => {
   return (
-    <Carousel>
-      <Carousel.Item>
-        <img src="./assets/0.jpeg"></img>
-        <Carousel.Caption>
-          <h3>First slide label</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item>
-        <img src="./assets/0.jpeg"></img>
-        <Carousel.Caption>
-          <h3>First slide label</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item>
-        <img src="./assets/0.jpeg"></img>
-        <Carousel.Caption>
-          <h3>First slide label</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-    </Carousel>
+    <HomeLayout>
+      <Products />
+    </HomeLayout>
   );
-}
+};
 
-export default UncontrolledExample;
+export default App;
