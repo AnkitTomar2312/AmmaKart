@@ -29,8 +29,8 @@
       text-overflow: ellipsis;
       font-size: 14px;
       color: rgba($color: $black, $alpha: 0.8);
-      white-space: nowrap;
-      overflow-x: hidden;
+      white-space: wrap;
+      // overflow-x: hidden;
 
       h3 {
         margin: 8px 0 14px;
@@ -65,4 +65,24 @@ button.cart-add {
   align-items: center;
   width: 100%;
   justify-content: space-between;
+}
+
+@media screen and (min-width: 300px) and (max-width: 667px) {
+  .product-list {
+    padding: 16px 32px;
+    width: 100%;
+    min-height: 100vh;
+
+    &--wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      flex-direction: column;
+      padding: 0 40px;
+    }
+  }
+  .item-card {
+    max-width: 100%;
+  }
 }
