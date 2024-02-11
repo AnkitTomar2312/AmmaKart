@@ -6,32 +6,19 @@ function ProductForm() {
   const [discount, setDiscount] = useState(0);
   const [thumbnail, setThumbnail] = useState("placeholder.png");
   const [item, setItem] = useState({
-    image: thumbnail,
+    thumbnail: thumbnail,
     title: title,
     discountedPrice: discount,
     price: price,
   });
+  const handleInput = (event) => {
+    setItem({ ...item, [event.target.name]: event.target.value });
+  };
 
-  const handleTitle = (e) => {
-    setTitle(e.target.value);
-    setItem({ ...item, title: e.target.value });
-  };
-  const handlePrice = (e) => {
-    setPrice(e.target.value);
-    setItem({ ...item, price: e.target.value });
-  };
-  const handleDiscount = (e) => {
-    setDiscount(e.target.value);
-    setItem({ ...item, discountedPrice: e.target.value });
-  };
-  const handleThumbnail = (e) => {
-    setThumbnail(e.target.value);
-    setItem({ ...item, image: e.target.value });
-  };
   const handleForm = (e) => {
     e.preventDefault();
     setItem({
-      image: thumbnail,
+      thumbnail: thumbnail,
       title: title,
       discountedPrice: discount,
       price: price,
@@ -45,45 +32,41 @@ function ProductForm() {
           <div className={"input-field"}>
             <label htmlFor="title">Title</label>
             <input
+              name="title"
               type="text"
               placeholder="enter title..."
-              onChange={(e) => {
-                handleTitle(e);
-              }}
-              value={title}
+              onChange={handleInput}
+              value={item.title}
             />
           </div>
           <div className={"input-field"}>
             <label htmlFor="price">Price</label>
             <input
+              name="price"
               type="number"
               placeholder="0"
-              onChange={(e) => {
-                handlePrice(e);
-              }}
-              value={price}
+              onChange={handleInput}
+              value={item.price}
             />
           </div>
           <div className={"input-field"}>
             <label htmlFor="price">Discounted Price</label>
             <input
+              name="discountedPrice"
               type="number"
               placeholder="0"
-              onChange={(e) => {
-                handleDiscount(e);
-              }}
-              value={discount}
+              onChange={handleInput}
+              value={item.discount}
             />
           </div>
           <div className={"input-field"}>
             <label htmlFor="price">Thumbnail</label>
             <input
+              name="thumbnail"
               type="text"
               placeholder="0"
-              onChange={(e) => {
-                handleThumbnail(e);
-              }}
-              value={thumbnail}
+              onChange={handleInput}
+              value={item.thumbnail}
             />
           </div>
           <div className={"submit-wrap"}>

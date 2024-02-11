@@ -23,7 +23,7 @@ const ListItems = ({ data }) => {
     <div className={"item-card"}>
       <img
         className={"img-fluid"}
-        src={`./assets/images/${data.image}`}
+        src={`./assets/images/${data.thumbnail}`}
         alt="placeholder"
       />
       <div className={"item-card__information"}>
