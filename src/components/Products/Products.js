@@ -24,8 +24,8 @@ const Products = () => {
   return (
     <div className="product-list--wrapper">
       <ListItems data={items[0]} />
-      <ListItems data={items[1]} />
-      <ListItems data={items[2]} />
+      {/* <ListItems data={items[1]} />
+      <ListItems data={items[2]} /> */}
     </div>
   );
 };
