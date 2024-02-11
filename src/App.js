@@ -4,10 +4,10 @@ import HomeLayout from "./Layouts/HomeLayout";
 import ProductForm from "./components/ProductForm/ProductForm";
 const App = () => {
   return (
-    // <HomeLayout>
-    //   <Products />
-    // </HomeLayout>
-    <ProductForm />
+    <HomeLayout>
+      <Products />
+    </HomeLayout>
+    //<ProductForm />
   );
 };
 
