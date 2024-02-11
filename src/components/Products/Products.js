@@ -1,8 +1,5 @@
 import React from "react";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import ListItems from "./ListItems.js/ListItems";
+import ListItems from "../ListItems.js/ListItems";
 const Products = () => {
   const items = [
     {
@@ -25,20 +22,10 @@ const Products = () => {
     },
   ];
   return (
-    <div>
-      <Container>
-        <Row>
-          <Col>
-            <ListItems data={items[0]} />
-          </Col>
-          <Col>
-            <ListItems data={items[1]} />
-          </Col>
-          <Col>
-            <ListItems data={items[2]} />
-          </Col>
-        </Row>
-      </Container>
+    <div className="product-list--wrapper">
+      <ListItems data={items[0]} />
+      {/* <ListItems data={items[1]} />
+      <ListItems data={items[2]} /> */}
     </div>
   );
 };

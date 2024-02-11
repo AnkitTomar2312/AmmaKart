@@ -1,22 +1,13 @@
 import React from "react";
-import HomeLayout from "./layouts/HomeLayout";
 import Products from "./components/Products/Products";
+import HomeLayout from "./Layouts/HomeLayout";
+import ProductForm from "./components/ProductForm/ProductForm";
 const App = () => {
   return (
-    <div>
-      <HomeLayout>
-        <div
-          style={{
-            paddingTop: "100px",
-            display: "flex",
-            justifyContent: "start",
-            alignItems: "flex-start",
-          }}
-        >
-          <Products />
-        </div>
-      </HomeLayout>
-    </div>
+    <HomeLayout>
+      <Products />
+    </HomeLayout>
+    //<ProductForm />
   );
 };
 
