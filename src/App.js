@@ -5,7 +5,7 @@ import ProductForm from "./components/ProductForm/ProductForm";
 const App = () => {
   return (
     <HomeLayout>
-      {/* <Products /> */}
+      <Products />
       <ProductForm />
     </HomeLayout>
   );

@@ -3,19 +3,19 @@ import ListItems from "../ListItems.js/ListItems";
 const Products = () => {
   const items = [
     {
-      image: "placeholder.png",
+      thumbnail: "placeholder.png",
       price: "450",
       discountedPrice: "340",
       title: "Title 1",
     },
     {
-      image: "placeholder.png",
+      thumbnail: "placeholder.png",
       price: "200",
       discountedPrice: "150",
       title: "Title 2",
     },
     {
-      image: "placeholder.png",
+      thumbnail: "placeholder.png",
       price: "650",
       discountedPrice: "500",
       title: "Title 3",

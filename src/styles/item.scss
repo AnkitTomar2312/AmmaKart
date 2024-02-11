@@ -1,7 +1,7 @@
 .product-wrapper {
   display: flex;
-  width: 100vw;
-  height: 100vh;
+  // width: 100vw;
+  // height: 100vh;
   align-items: center;
   flex-direction: row;
   justify-content: space-around;
@@ -9,7 +9,7 @@
 }
 
 .form {
-  height: 100vh;
+  // height: 100vh;
   width: 50%;
   position: relative;
   text-align: center;
@@ -87,8 +87,8 @@
       text-overflow: ellipsis;
       font-size: 14px;
       color: rgba($color: $black, $alpha: 0.8);
-      white-space: wrap;
-      // overflow-x: hidden;
+      white-space: nowrap;
+      overflow: hidden;
 
       h3 {
         margin: 8px 0 14px;
