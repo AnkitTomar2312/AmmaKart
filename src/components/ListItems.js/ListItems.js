@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 const ListItems = ({ data }) => {
-  const [counter, setCounter] = useState(0);
+  const [counter, setCounter] = useState(1);
   const [added, setAdded] = useState(false);
   const [message, setMessage] = useState("Not added to the cart yet!");
   const handleClick = (data) => {
@@ -8,8 +8,7 @@ const ListItems = ({ data }) => {
     setAdded(true);
   };
   const descreaseCounterByOne = () => {
-    if (counter <= 0) {
-      setCounter(0);
+    if (counter <= 1) {
       setAdded(false);
       setMessage("Not added to the cart yet!");
     } else {
