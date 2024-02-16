@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ListItems from "../ListItems.js/ListItems";
+import axios from "axios";
 const Products = () => {
   const [item, setItem] = useState([
     {
@@ -24,6 +25,31 @@ const Products = () => {
       title: "Title 3",
     },
   ]);
+
+  useEffect(() => {
+    // fetch(
+    //   "https://ammakart-49f10-default-rtdb.asia-southeast1.firebasedatabase.app/items.json"
+    // )
+    //   .then((response) => response.json())
+    //   .then((data) => console.log(data))
+    //   .catch((err) => console.log(err));
+
+    axios
+      .get(
+        "https://ammakart-49f10-default-rtdb.asia-southeast1.firebasedatabase.app/items.json"
+      )
+      .then((response) => {
+        const data = response.data;
+        const transformData = data.map((item, index) => {
+          return {
+            ...item,
+            index,
+          };
+        });
+        console.log(transformData);
+      })
+      .catch((err) => console.log(err));
+  });
   return (
     <div className="product-list--wrapper">
       {item.map((i) => {
