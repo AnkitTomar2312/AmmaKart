@@ -1,31 +1,10 @@
 import React, { useEffect, useState } from "react";
 import ListItems from "../ListItems.js/ListItems";
 import axios from "axios";
+import Loader from "../Loader/Loader";
 const Products = () => {
-  const [item, setItem] = useState([
-    {
-      id: 1,
-      thumbnail: "placeholder.png",
-      price: "450",
-      discountedPrice: "340",
-      title: "Title 1",
-    },
-    {
-      id: 2,
-      thumbnail: "placeholder.png",
-      price: "200",
-      discountedPrice: "150",
-      title: "Title 2",
-    },
-    {
-      id: 3,
-      thumbnail: "placeholder.png",
-      price: "650",
-      discountedPrice: "500",
-      title: "Title 3",
-    },
-  ]);
-
+  const [item, setItem] = useState([]);
+  const [loader, setLoader] = useState(true);
   const handleItem = async () => {
     try {
       const result = await axios.get(
@@ -41,6 +20,8 @@ const Products = () => {
     } catch (error) {
       console.log({ Error: error });
       alert(error);
+    } finally {
+      setLoader(false);
     }
   };
 
@@ -63,13 +44,20 @@ const Products = () => {
   }, [handleUpdate]);
   const updateTitle = () => {};
   return (
-    <div className="product-list--wrapper">
-      {item.map((i) => {
-        return (
-          <ListItems key={i.index} data={i} TitleUpdateHandler={handleUpdate} />
-        );
-      })}
-    </div>
+    <>
+      <div className="product-list--wrapper">
+        {item.map((i) => {
+          return (
+            <ListItems
+              key={i.index}
+              data={i}
+              TitleUpdateHandler={handleUpdate}
+            />
+          );
+        })}
+      </div>
+      {loader && <Loader />}
+    </>
   );
 };
 
