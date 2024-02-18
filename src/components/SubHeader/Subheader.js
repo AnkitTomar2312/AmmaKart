@@ -17,7 +17,7 @@ const Subheader = () => {
           <a href="">Category 3</a>
         </li>
         <li>
-          <a href="">Category 4</a>
+          <a href="">Add product</a>
         </li>
       </ul>
     </div>

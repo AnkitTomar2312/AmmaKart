@@ -1,14 +1,15 @@
 .product-wrapper {
   display: flex;
-  width: 100vw;
-  height: 100vh;
+  // width: 100vw;
+  // height: 100vh;
   align-items: center;
   flex-direction: row;
   justify-content: space-around;
+  padding-top: 60px;
 }
 
 .form {
-  height: 100vh;
+  // height: 100vh;
   width: 50%;
   position: relative;
   text-align: center;
@@ -20,7 +21,6 @@
     height: 100vh;
     right: 0;
     content: "";
-    border-right: 1px solid rgb(209, 209, 209);
   }
 
   form {
@@ -73,7 +73,7 @@
   flex-direction: column;
   height: inherit;
   padding: 0;
-  min-width: 20%;
+  width: 16.66rem;
   margin: 16px;
   border: 1px solid rgba($color: $black, $alpha: 0.1);
   border-radius: 4px;
@@ -86,8 +86,8 @@
       text-overflow: ellipsis;
       font-size: 14px;
       color: rgba($color: $black, $alpha: 0.8);
-      white-space: wrap;
-      // overflow-x: hidden;
+      white-space: nowrap;
+      overflow: scroll;
 
       h3 {
         margin: 8px 0 14px;

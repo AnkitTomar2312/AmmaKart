@@ -6,8 +6,8 @@ const App = () => {
   return (
     <HomeLayout>
       <Products />
+      {/* <ProductForm /> */}
     </HomeLayout>
-    //<ProductForm />
   );
 };
 

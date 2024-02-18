@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-const ListItems = ({ data }) => {
-  const [counter, setCounter] = useState(0);
+const ListItems = ({ data, TitleUpdateHandler }) => {
+  const [counter, setCounter] = useState(1);
   const [added, setAdded] = useState(false);
   const [message, setMessage] = useState("Not added to the cart yet!");
+  // console.log(data);
   const handleClick = (data) => {
     setMessage("Added to the cart");
     setAdded(true);
   };
   const descreaseCounterByOne = () => {
-    if (counter <= 0) {
-      setCounter(0);
+    if (counter <= 1) {
       setAdded(false);
       setMessage("Not added to the cart yet!");
     } else {
@@ -19,11 +19,12 @@ const ListItems = ({ data }) => {
   const increaseCounterByOne = () => {
     setCounter(counter + 1);
   };
+
   return (
     <div className={"item-card"}>
       <img
         className={"img-fluid"}
-        src={`./assets/images/${data.image}`}
+        src={`./assets/images/${data.thumbnail}`}
         alt="placeholder"
       />
       <div className={"item-card__information"}>
@@ -38,6 +39,7 @@ const ListItems = ({ data }) => {
         </div>
       </div>
       <small className="cart-message">{message}</small>
+      {/* <button onClick={() => TitleUpdateHandler(data.id)}>click</button> */}
       {added ? (
         <div className={"cart-addon"}>
           <button onClick={descreaseCounterByOne}>
