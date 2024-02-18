@@ -39,7 +39,7 @@ const ListItems = ({ data, TitleUpdateHandler }) => {
         </div>
       </div>
       <small className="cart-message">{message}</small>
-      <button onClick={() => TitleUpdateHandler(data.id)}>click</button>
+      {/* <button onClick={() => TitleUpdateHandler(data.id)}>click</button> */}
       {added ? (
         <div className={"cart-addon"}>
           <button onClick={descreaseCounterByOne}>
