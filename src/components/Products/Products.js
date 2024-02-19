@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import ListItems from "../ListItems.js/ListItems";
 import axios from "axios";
 import Loader from "../Loader/Loader";
-const Products = () => {
+const Products = ({ onAddItem, onRemoveItem }) => {
   const [item, setItem] = useState([]);
   const [loader, setLoader] = useState(true);
+  const [presentItems, setPresentItems] = useState([]);
   const handleItem = async () => {
     try {
       const result = await axios.get(
@@ -42,6 +43,23 @@ const Products = () => {
   useEffect(() => {
     handleItem();
   }, [handleUpdate]);
+
+  const handleAddItem = (id) => {
+    if (presentItems.indexOf(id) > -1) {
+      return;
+    }
+    setPresentItems([...presentItems, id]);
+    onAddItem();
+  };
+  const handleRemoveItem = (id) => {
+    let index = presentItems.indexOf(id);
+    if (index > -1) {
+      let item = [...presentItems];
+      item.splice(index, 1);
+      setPresentItems([...item]);
+      onRemoveItem();
+    }
+  };
   const updateTitle = () => {};
   return (
     <>
@@ -52,6 +70,8 @@ const Products = () => {
               key={i.index}
               data={i}
               TitleUpdateHandler={handleUpdate}
+              onAdd={handleAddItem}
+              onRemove={handleRemoveItem}
             />
           );
         })}

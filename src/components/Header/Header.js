@@ -1,6 +1,7 @@
 import React from "react";
 
-const Header = () => {
+const Header = ({ cart }) => {
+  console.log(cart);
   return (
     <>
       <header>
@@ -73,7 +74,7 @@ const Header = () => {
         </div>
         <div className="cart-container">
           <button>
-            <span data-items={0}>Cart</span>
+            <span data-items={cart}>Cart</span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="icon icon-tabler icon-tabler-shopping-cart-plus"
