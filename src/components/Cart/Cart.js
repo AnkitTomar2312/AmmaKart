@@ -29,7 +29,27 @@ const Cart = ({ cart }) => {
           <path d="M15 6h6m-3 -3v6" />
         </svg>
       </button>
-      {modal && <Modal onClose={handleModal}>this is cart</Modal>}
+      {modal && (
+        <Modal onClose={handleModal}>
+          <div className="checkout-modal">
+            <h2>Checkout Modal</h2>
+            <div className="checkout-modal_list">
+              <div className="empty-cart">
+                Please add something in your cart
+              </div>
+            </div>
+            {cart > 0 && (
+              <div className="checkout-modal_footer">
+                <div className="totalAmount">
+                  <h4>Total Amount:</h4>
+                  <h4>2000 INR</h4>
+                </div>
+                <button>Order Now</button>
+              </div>
+            )}
+          </div>
+        </Modal>
+      )}
     </div>
   );
 };
