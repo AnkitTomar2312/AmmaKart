@@ -1,9 +1,13 @@
-import React from "react";
-
-const index = ({ cart }) => {
+import React, { useState } from "react";
+import Modal from "../Modal/Modal";
+const Cart = ({ cart }) => {
+  const [modal, setModal] = useState(false);
+  const handleModal = () => {
+    setModal((previousValue) => !previousValue);
+  };
   return (
     <div>
-      <button>
+      <button onClick={handleModal}>
         <span data-items={cart}>Cart</span>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -25,8 +29,9 @@ const index = ({ cart }) => {
           <path d="M15 6h6m-3 -3v6" />
         </svg>
       </button>
+      {modal && <Modal onClose={handleModal}>this is cart</Modal>}
     </div>
   );
 };
 
-export default index;
+export default Cart;
