@@ -34,9 +34,37 @@ const Cart = ({ cart }) => {
           <div className="checkout-modal">
             <h2>Checkout Modal</h2>
             <div className="checkout-modal_list">
-              <div className="empty-cart">
-                Please add something in your cart
-              </div>
+              {cart > 0 ? (
+                <div className="checkout-modal_list-item">
+                  <div className="img-wrap">
+                    <img
+                      className="img-fluid"
+                      src={"./assets/images/placeholder.png"}
+                      alt="placeholder"
+                    />
+                  </div>
+                  <div className="information">
+                    <div>
+                      <h4>Title of the product</h4>
+                      <div className="pricing">
+                        <span>2000</span>
+                        <small>
+                          <strike>2500</strike>
+                        </small>
+                      </div>
+                    </div>
+                    <div className="cart-addon cart-addon__modal">
+                      <button>-</button>
+                      <span>{0}</span>
+                      <button>+</button>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <div className="empty-cart">
+                  Please add something in your cart
+                </div>
+              )}
             </div>
             {cart > 0 && (
               <div className="checkout-modal_footer">
