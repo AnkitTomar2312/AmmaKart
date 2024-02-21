@@ -49,7 +49,15 @@ const Cart = ({ cart, items }) => {
               <div className="checkout-modal_footer">
                 <div className="totalAmount">
                   <h4>Total Amount:</h4>
-                  <h4>2000 INR</h4>
+                  <h4>
+                    {items.reduce((accumulator, currentItem) => {
+                      const subtotal =
+                        currentItem.quantity * currentItem.discountedPrice;
+
+                      return accumulator + subtotal;
+                    }, 0)}{" "}
+                    <span>INR</span>
+                  </h4>
                 </div>
                 <button>Order Now</button>
               </div>
