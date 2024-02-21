@@ -1,39 +1,38 @@
 import React, { useState } from "react";
 import Modal from "../Modal/Modal";
 const ListItems = ({ data, TitleUpdateHandler, onAdd, onRemove }) => {
-  const [counter, setCounter] = useState(1);
-  const [added, setAdded] = useState(false);
+  //const [counter, setCounter] = useState(1);
   const [message, setMessage] = useState("Not added to the cart yet!");
   const [showModal, setShowModal] = useState(false);
-  // console.log(data);
+  // console.log(data.quantity);
   const handleClick = (data) => {
     setMessage("Added to the cart");
-    setAdded(true);
     onAdd(data.id);
   };
   const descreaseCounterByOne = (event) => {
     event.stopPropagation();
-
-    if (counter <= 1) {
-      setAdded(false);
-      setMessage("Not added to the cart yet!");
-      onRemove(data.id);
-    } else {
-      setCounter(counter - 1);
-    }
+    onRemove(data.id);
+    // if (counter <= 1) {
+    //setAdded(false);
+    //   setMessage("Not added to the cart yet!");
+    //   onRemove(data.id);
+    // } else {
+    //   //setCounter(counter - 1);
+    // }
   };
   const increaseCounterByOne = (event) => {
     event.stopPropagation();
     onAdd(data.id);
-    setCounter(counter + 1);
+    //setCounter(counter + 1);
   };
   const handleModal = () => {
     setShowModal((previousState) => !previousState);
   };
   return (
     <>
-      <div className={"item-card"} onClick={handleModal}>
+      <div className={"item-card"}>
         <img
+          onClick={handleModal}
           className={"img-fluid"}
           src={`./assets/images/${data.thumbnail}`}
           alt="placeholder"
@@ -51,17 +50,7 @@ const ListItems = ({ data, TitleUpdateHandler, onAdd, onRemove }) => {
         </div>
         <small className="cart-message">{message}</small>
         {/* <button onClick={() => TitleUpdateHandler(data.id)}>click</button> */}
-        {added ? (
-          <div className={"cart-addon"}>
-            <button onClick={descreaseCounterByOne}>
-              <span>-</span>
-            </button>
-            <span className={"counter"}>{counter}</span>
-            <button onClick={increaseCounterByOne}>
-              <span>+</span>
-            </button>
-          </div>
-        ) : (
+        {data.quantity < 1 ? (
           <button
             className={"cart-add"}
             onClick={() => {
@@ -71,6 +60,16 @@ const ListItems = ({ data, TitleUpdateHandler, onAdd, onRemove }) => {
             <span>Add to Cart</span>
             <img src="./assets/icons/add_cart.svg" alt="addtocartsvg" />
           </button>
+        ) : (
+          <div className={"cart-addon"}>
+            <button onClick={descreaseCounterByOne}>
+              <span>-</span>
+            </button>
+            <span className={"counter"}>{data.quantity}</span>
+            <button onClick={increaseCounterByOne}>
+              <span>+</span>
+            </button>
+          </div>
         )}
       </div>
       {showModal && (
@@ -92,17 +91,7 @@ const ListItems = ({ data, TitleUpdateHandler, onAdd, onRemove }) => {
                 </small>
               </div>
               <p>{data.description}</p>
-              {added ? (
-                <div className={"cart-addon "}>
-                  <button onClick={descreaseCounterByOne}>
-                    <span>-</span>
-                  </button>
-                  <span className={"counter"}>{counter}</span>
-                  <button onClick={increaseCounterByOne}>
-                    <span>+</span>
-                  </button>
-                </div>
-              ) : (
+              {data.quantity < 1 ? (
                 <button
                   className={"cart-add"}
                   onClick={() => {
@@ -112,6 +101,16 @@ const ListItems = ({ data, TitleUpdateHandler, onAdd, onRemove }) => {
                   <span>Add to Cart</span>
                   <img src="./assets/icons/add_cart.svg" alt="addtocartsvg" />
                 </button>
+              ) : (
+                <div className={"cart-addon "}>
+                  <button onClick={descreaseCounterByOne}>
+                    <span>-</span>
+                  </button>
+                  <span className={"counter"}>{data.quantity}</span>
+                  <button onClick={increaseCounterByOne}>
+                    <span>+</span>
+                  </button>
+                </div>
               )}
             </div>
           </div>

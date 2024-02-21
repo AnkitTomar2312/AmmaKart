@@ -1,7 +1,6 @@
 import React from "react";
 import Cart from "../Cart/Cart";
 const Header = ({ cart }) => {
-  console.log(cart);
   return (
     <>
       <header>
