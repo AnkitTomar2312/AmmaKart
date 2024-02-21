@@ -1,8 +1,18 @@
 import ReactDom from "react-dom";
 
+export const BackDrop = (props) => {
+  const handleClick = () => {
+    if (props.onClose) {
+      props.onClose();
+    }
+  };
+  return <div className="loader-overlay" onClick={handleClick}></div>;
+};
+
 const Loader = () => {
   return ReactDom.createPortal(
-    <div className="loader-overlay">
+    <>
+      <BackDrop />
       <div className="loading-dots">
         <div>Loading</div>
         <div className="loading-dots--dot"></div>
@@ -11,7 +21,7 @@ const Loader = () => {
         <div className="loading-dots--dot"></div>
         <div className="loading-dots--dot"></div>
       </div>
-    </div>,
+    </>,
     document.getElementById("loader-root")
   );
 };
