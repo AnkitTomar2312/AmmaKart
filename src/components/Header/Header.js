@@ -1,6 +1,6 @@
 import React from "react";
 import Cart from "../Cart/Cart";
-const Header = ({ cart }) => {
+const Header = ({ cart, items }) => {
   return (
     <>
       <header>
@@ -72,7 +72,7 @@ const Header = ({ cart }) => {
           </svg>
         </div>
         <div className="cart-container">
-          <Cart cart={cart} />
+          <Cart cart={cart} items={items} />
         </div>
       </header>
     </>

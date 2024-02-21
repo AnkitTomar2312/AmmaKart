@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Modal from "../Modal/Modal";
-const Cart = ({ cart }) => {
+import CartItem from "./CartItem";
+const Cart = ({ cart, items }) => {
   const [modal, setModal] = useState(false);
   const handleModal = () => {
     setModal((previousValue) => !previousValue);
@@ -35,31 +36,9 @@ const Cart = ({ cart }) => {
             <h2>Checkout Modal</h2>
             <div className="checkout-modal_list">
               {cart > 0 ? (
-                <div className="checkout-modal_list-item">
-                  <div className="img-wrap">
-                    <img
-                      className="img-fluid"
-                      src={"./assets/images/placeholder.png"}
-                      alt="placeholder"
-                    />
-                  </div>
-                  <div className="information">
-                    <div>
-                      <h4>Title of the product</h4>
-                      <div className="pricing">
-                        <span>2000</span>
-                        <small>
-                          <strike>2500</strike>
-                        </small>
-                      </div>
-                    </div>
-                    <div className="cart-addon cart-addon__modal">
-                      <button>-</button>
-                      <span>{0}</span>
-                      <button>+</button>
-                    </div>
-                  </div>
-                </div>
+                items.map((item, index) => {
+                  return <CartItem data={item} key={items.id} />;
+                })
               ) : (
                 <div className="empty-cart">
                   Please add something in your cart

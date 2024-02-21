@@ -27,7 +27,7 @@ const App = () => {
     setCartItems([...items]);
   };
   return (
-    <HomeLayout cart={cartItems.length}>
+    <HomeLayout cart={cartItems.length} items={cartItems}>
       <Products onAddItem={handleAddItem} onRemoveItem={handleRemoveItem} />
       {/* <ProductForm /> */}
     </HomeLayout>
