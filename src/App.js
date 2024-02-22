@@ -4,7 +4,10 @@ import HomeLayout from "./Layouts/HomeLayout";
 import ProductForm from "./components/ProductForm/ProductForm";
 const App = () => {
   const [cartItems, setCartItems] = useState([]);
-
+  const [eventQueue, setEventQueue] = useState({
+    id: "",
+    type: "",
+  });
   const handleAddItem = (item) => {
     let items = [...cartItems];
     let index = items.findIndex((i) => i.id === item.id);
@@ -26,9 +29,24 @@ const App = () => {
     }
     setCartItems([...items]);
   };
+
+  const handleEventQueue = (id, type) => {
+    setEventQueue({
+      id,
+      type,
+    });
+  };
   return (
-    <HomeLayout cart={cartItems.length} items={cartItems}>
-      <Products onAddItem={handleAddItem} onRemoveItem={handleRemoveItem} />
+    <HomeLayout
+      cart={cartItems.length}
+      items={cartItems}
+      onhandleEvent={handleEventQueue}
+    >
+      <Products
+        onAddItem={handleAddItem}
+        onRemoveItem={handleRemoveItem}
+        eventState={eventQueue}
+      />
       {/* <ProductForm /> */}
     </HomeLayout>
   );
