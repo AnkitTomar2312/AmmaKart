@@ -1,6 +1,6 @@
 import React from "react";
 import Cart from "../Cart/Cart";
-const Header = ({ cart, items }) => {
+const Header = ({ cart, items, onhandleEvent }) => {
   return (
     <>
       <header>
@@ -72,7 +72,7 @@ const Header = ({ cart, items }) => {
           </svg>
         </div>
         <div className="cart-container">
-          <Cart cart={cart} items={items} />
+          <Cart cart={cart} items={items} onhandleEvent={onhandleEvent} />
         </div>
       </header>
     </>

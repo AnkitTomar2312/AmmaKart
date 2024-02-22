@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Modal from "../Modal/Modal";
 import CartItem from "./CartItem";
-const Cart = ({ cart, items }) => {
+const Cart = ({ cart, items, onhandleEvent }) => {
   const [modal, setModal] = useState(false);
   const handleModal = () => {
     setModal((previousValue) => !previousValue);
@@ -37,7 +37,14 @@ const Cart = ({ cart, items }) => {
             <div className="checkout-modal_list">
               {cart > 0 ? (
                 items.map((item, index) => {
-                  return <CartItem data={item} key={items.id} />;
+                  return (
+                    <CartItem
+                      data={item}
+                      key={items.id}
+                      onEmitDecreaseItem={(id) => onhandleEvent(id, -1)}
+                      onEmitIncreaseItem={(id) => onhandleEvent(id, 1)}
+                    />
+                  );
                 })
               ) : (
                 <div className="empty-cart">
