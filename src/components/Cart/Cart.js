@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Modal from "../Modal/Modal";
 import CartItem from "./CartItem";
 import OrderSuccess from "../OrderSuccess";
@@ -9,9 +9,10 @@ const Cart = ({ cart, items, onhandleEvent }) => {
     setModal((previousValue) => !previousValue);
   };
   const handleOrderModal = () => {
-    setHandleOrder(false);
     setModal(false);
+    setHandleOrder(false);
   };
+
   return (
     <div>
       <button onClick={handleModal}>
@@ -75,6 +76,7 @@ const Cart = ({ cart, items, onhandleEvent }) => {
                 <button
                   onClick={() => {
                     setHandleOrder(!handleOrder);
+                    setModal(false);
                   }}
                 >
                   Order Now
