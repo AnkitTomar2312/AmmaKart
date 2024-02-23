@@ -134,6 +134,9 @@ header {
   .cart-container {
     a span:first-child,
     button span:first-child {
+      display: block;
+    }
+    svg {
       display: none;
     }
   }
