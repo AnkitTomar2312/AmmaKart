@@ -30,7 +30,7 @@ const Header = ({ cart, items, onhandleEvent }) => {
         </div>
         <div className="searchBox-container">
           <Search />
-          <svg
+          {/* <svg
             xmlns="http://www.w3.org/2000/svg"
             className="icon icon-tabler icon-tabler-search"
             width="20"
@@ -45,7 +45,7 @@ const Header = ({ cart, items, onhandleEvent }) => {
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <circle cx="10" cy="10" r="7" />
             <line x1="21" y1="21" x2="15" y2="15" />
-          </svg>
+          </svg> */}
         </div>
         <div className="cart-container">
           <Cart cart={cart} items={items} onhandleEvent={onhandleEvent} />
