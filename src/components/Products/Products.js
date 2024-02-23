@@ -2,27 +2,58 @@ import React, { useEffect, useState } from "react";
 import ListItems from "../ListItems.js/ListItems";
 import axios from "axios";
 import Loader from "../Loader/Loader";
+import {
+  useNavigate,
+  useParams,
+  useSearchParams,
+  useLocation,
+} from "react-router-dom";
 const Products = ({ onAddItem, onRemoveItem, eventState }) => {
   const [item, setItem] = useState([]);
   const [loader, setLoader] = useState(true);
-  const handleItem = async () => {
-    try {
-      const result = await axios.get(
-        "https://ammakart-49f10-default-rtdb.asia-southeast1.firebasedatabase.app/items.json"
-      );
+  const params = useParams();
+  const navigate = useNavigate();
+  const { search } = useLocation();
+  const queryParams = new URLSearchParams(search).get("search");
+  useEffect(() => {
+    async function fetchItems() {
+      try {
+        let slug = "items.json";
+        if (params.category) {
+          slug = `items-${params.category}.json`;
+        }
+        if (queryParams) {
+          slug += `?search=${queryParams}`;
+        }
+        const result = await axios.get(
+          `https://ammakart-49f10-default-rtdb.asia-southeast1.firebasedatabase.app/${slug}`
+        );
 
-      let data = result.data;
-      let transformData = data.map((item, index) => {
-        return { ...item, quantity: 0, id: index };
-      });
+        let data = result.data;
+        if (!data) {
+          handleNotFound();
+          return;
+        }
+        let transformData = data.map((item, index) => {
+          return { ...item, quantity: 0, id: index };
+        });
 
-      setItem(transformData);
-    } catch (error) {
-      console.log({ Error: error });
-      alert(error);
-    } finally {
-      setLoader(false);
+        setItem(transformData);
+      } catch (error) {
+        console.log({ Error: error });
+      } finally {
+        setLoader(false);
+      }
     }
+    fetchItems();
+    return () => {
+      setItem([]);
+      setLoader(true);
+    };
+  }, [params.category, queryParams]);
+
+  const handleNotFound = () => {
+    navigate("/404");
   };
 
   const handleUpdate = async (id) => {
@@ -39,9 +70,6 @@ const Products = ({ onAddItem, onRemoveItem, eventState }) => {
       alert(error);
     }
   };
-  useEffect(() => {
-    handleItem();
-  }, []);
 
   useEffect(() => {
     if (eventState.id > -1) {
