@@ -2,28 +2,41 @@ import React, { useEffect, useState } from "react";
 import ListItems from "../ListItems.js/ListItems";
 import axios from "axios";
 import Loader from "../Loader/Loader";
+import { useParams } from "react-router-dom";
 const Products = ({ onAddItem, onRemoveItem, eventState }) => {
   const [item, setItem] = useState([]);
   const [loader, setLoader] = useState(true);
-  const handleItem = async () => {
-    try {
-      const result = await axios.get(
-        "https://ammakart-49f10-default-rtdb.asia-southeast1.firebasedatabase.app/items.json"
-      );
+  const params = useParams();
+  useEffect(() => {
+    async function fetchItems() {
+      try {
+        let slug = "items.json";
+        if (params.category) {
+          slug = `items-${params.category}.json`;
+        }
+        const result = await axios.get(
+          `https://ammakart-49f10-default-rtdb.asia-southeast1.firebasedatabase.app/${slug}`
+        );
 
-      let data = result.data;
-      let transformData = data.map((item, index) => {
-        return { ...item, quantity: 0, id: index };
-      });
+        let data = result.data;
+        let transformData = data.map((item, index) => {
+          return { ...item, quantity: 0, id: index };
+        });
 
-      setItem(transformData);
-    } catch (error) {
-      console.log({ Error: error });
-      alert(error);
-    } finally {
-      setLoader(false);
+        setItem(transformData);
+      } catch (error) {
+        console.log({ Error: error });
+        alert(error);
+      } finally {
+        setLoader(false);
+      }
     }
-  };
+    fetchItems();
+    return () => {
+      setItem([]);
+      setLoader(true);
+    };
+  }, [params.category]);
 
   const handleUpdate = async (id) => {
     const title = `Udated title at #ID ${id}`;
@@ -39,9 +52,6 @@ const Products = ({ onAddItem, onRemoveItem, eventState }) => {
       alert(error);
     }
   };
-  useEffect(() => {
-    handleItem();
-  }, []);
 
   useEffect(() => {
     if (eventState.id > -1) {
