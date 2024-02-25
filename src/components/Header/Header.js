@@ -1,7 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Cart from "../Cart/Cart";
 import Search from "../SearchData";
+import { useNavigate } from "react-router-dom";
 const Header = ({ cart, items, onhandleEvent }) => {
+  const navigate = useNavigate();
+  const [showLogin, setShowLogin] = useState(true);
+  useEffect(() => {
+    let isAdded = localStorage.getItem("authResponse");
+    if (isAdded) {
+      isAdded = JSON.parse(isAdded);
+      console.log(isAdded.data.email);
+      if (isAdded.data.email) {
+        setShowLogin(false);
+      }
+    }
+  }, []);
+
   return (
     <>
       <header>
@@ -47,10 +61,20 @@ const Header = ({ cart, items, onhandleEvent }) => {
             <line x1="21" y1="21" x2="15" y2="15" />
           </svg> */}
         </div>
-        <div className="cart-container">
-          <Cart cart={cart} items={items} onhandleEvent={onhandleEvent} />
-          {/* <Cart /> */}
-        </div>
+        {showLogin ? (
+          <button
+            className="login-btn"
+            onClick={() => {
+              navigate("/login");
+            }}
+          >
+            Login
+          </button>
+        ) : (
+          <div className="cart-container">
+            <Cart cart={cart} items={items} onhandleEvent={onhandleEvent} />
+          </div>
+        )}
       </header>
     </>
   );
