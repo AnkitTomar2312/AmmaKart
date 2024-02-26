@@ -68,7 +68,7 @@ const Header = ({ cart, items, onhandleEvent }) => {
               navigate("/login");
             }}
           >
-            Login
+            Signup
           </button>
         ) : (
           <div className="cart-container">
