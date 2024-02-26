@@ -27,7 +27,7 @@ header {
 
     svg {
       margin-left: 8px;
-      font-size: 30px;
+      font-size: 300px;
     }
   }
 
@@ -38,7 +38,6 @@ header {
 
 .cart-container {
   display: flex;
-
   a,
   button {
     margin: auto;
@@ -135,13 +134,16 @@ header {
   .cart-container {
     a span:first-child,
     button span:first-child {
+      display: block;
+    }
+    svg {
       display: none;
     }
   }
   .searchBox-container {
-    form {
-      display: none;
-    }
+    // form {
+    //   display: none;
+    // }
     form + svg {
       margin-left: auto;
       display: block;
