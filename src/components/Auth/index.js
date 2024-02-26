@@ -43,9 +43,18 @@ const AuthIndex = () => {
     } finally {
       setDetails({ email: "", password: "" });
       setLoader(false);
+      Navigate("/");
     }
   };
-
+  // useEffect(() => {
+  //   let isAdded = localStorage.getItem("authResponse");
+  //   if (isAdded) {
+  //     isAdded = JSON.parse(isAdded);
+  //     if (isAdded.data.email) {
+  //       Navigate("/");
+  //     }
+  //   }
+  // }, []);
   return (
     <>
       <div className="auth-container">
