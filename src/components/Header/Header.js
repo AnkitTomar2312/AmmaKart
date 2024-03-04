@@ -2,20 +2,12 @@ import React, { useEffect, useState } from "react";
 import Cart from "../Cart/Cart";
 import Search from "../SearchData";
 import { useNavigate } from "react-router-dom";
+import { UseSelector, useSelector } from "react-redux";
+import CartSlice from "../../redux/CartSlice";
 const Header = ({ cart, items, onhandleEvent }) => {
   const navigate = useNavigate();
-  const [showLogin, setShowLogin] = useState(true);
-  useEffect(() => {
-    let isAdded = localStorage.getItem("authResponse");
-    if (isAdded) {
-      isAdded = JSON.parse(isAdded);
-      console.log(isAdded.data.email);
-      if (isAdded.data.email) {
-        setShowLogin(false);
-      }
-    }
-  }, []);
-
+  const showLogin = useSelector((state) => state.cart.showCart);
+  useEffect(() => {}, []);
   return (
     <>
       <header>

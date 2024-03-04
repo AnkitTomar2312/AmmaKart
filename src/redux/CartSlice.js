@@ -3,11 +3,13 @@ import { createSlice } from "@reduxjs/toolkit";
 const CartSlice = createSlice({
   name: "cart",
   initialState: {
-    showCart: false,
+    showCart: true,
   },
   reducers: {
     setShowCart: (state, action) => {
-      state.showCart = !state.showCart;
+      let user = localStorage.getItem("authResponse");
+      user = JSON.parse(user);
+      if (user.data.email) state.showCart = false;
     },
   },
 });
