@@ -2,15 +2,17 @@ import { Fragment, useEffect, useState } from "react";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
 import Loader from "../Loader/Loader";
 import axios from "axios";
-
+import { UseSelector, useDispatch } from "react-redux";
+import CartSlice from "../../redux/CartSlice";
 const AuthIndex = () => {
-  const [loader, setLoader] = useState(false);
   const Navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [loader, setLoader] = useState(false);
   const [details, setDetails] = useState({
     email: "",
     password: "",
   });
-
+  const { setShowCart } = CartSlice.actions;
   const handleInput = (e) => {
     setDetails({
       ...details,
@@ -37,24 +39,16 @@ const AuthIndex = () => {
         }
       );
       localStorage.setItem("authResponse", JSON.stringify(response));
-      console.log(response);
     } catch (error) {
       console.log(error.response);
     } finally {
       setDetails({ email: "", password: "" });
       setLoader(false);
+      dispatch(setShowCart());
       Navigate("/");
     }
   };
-  // useEffect(() => {
-  //   let isAdded = localStorage.getItem("authResponse");
-  //   if (isAdded) {
-  //     isAdded = JSON.parse(isAdded);
-  //     if (isAdded.data.email) {
-  //       Navigate("/");
-  //     }
-  //   }
-  // }, []);
+
   return (
     <>
       <div className="auth-container">
