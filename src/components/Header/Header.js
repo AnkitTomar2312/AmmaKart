@@ -7,7 +7,19 @@ import CartSlice from "../../redux/CartSlice";
 const Header = ({ cart, items, onhandleEvent }) => {
   const navigate = useNavigate();
   const showLogin = useSelector((state) => state.cart.showCart);
-  useEffect(() => {}, []);
+  const [showBtn, setShowBtn] = useState(true);
+  console.log(showLogin);
+  useEffect(() => {
+    if (!showLogin) {
+      setShowBtn(false);
+    } else {
+      let user = localStorage.getItem("authResponse");
+      user = JSON.parse(user);
+      if (user?.data.email) {
+        setShowBtn(false);
+      }
+    }
+  });
   return (
     <>
       <header>
@@ -53,7 +65,7 @@ const Header = ({ cart, items, onhandleEvent }) => {
             <line x1="21" y1="21" x2="15" y2="15" />
           </svg> */}
         </div>
-        {showLogin ? (
+        {showBtn ? (
           <button
             className="login-btn"
             onClick={() => {
